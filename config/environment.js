@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'content-tagger-frontend',
+    modulePrefix: 'content-tagger',
     environment,
     rootURL: '/',
     locationType: 'auto',

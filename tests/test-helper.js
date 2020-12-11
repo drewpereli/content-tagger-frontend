@@ -1,5 +1,5 @@
-import Application from 'content-tagger-frontend/app';
-import config from 'content-tagger-frontend/config/environment';
+import Application from 'content-tagger/app';
+import config from 'content-tagger/config/environment';
 import { setApplication } from '@ember/test-helpers';
 import { start } from 'ember-qunit';
 

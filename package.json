@@ -1,8 +1,8 @@
 {
-  "name": "content-tagger-frontend",
+  "name": "content-tagger",
   "version": "0.0.0",
   "private": true,
-  "description": "Small description for content-tagger-frontend goes here",
+  "description": "Small description for content-tagger goes here",
   "repository": "",
   "license": "MIT",
   "author": "",
