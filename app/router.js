@@ -10,4 +10,5 @@ Router.map(function () {
   this.route('login');
   this.route('items');
   this.route('sign-up');
+  this.route('log-out');
 });

@@ -1,3 +1,29 @@
+<BsNavbar @type="dark" @backgroundColor="dark" as |navbar|>
+  <div class="navbar-header mr-auto">
+    <LinkTo @route="index" class="navbar-brand">Home</LinkTo>
+  </div>
+  <navbar.nav as |nav|>
+    {{#if this.session.isAuthenticated}}
+      <nav.item>
+        <nav.link-to @route="log-out">
+          Log Out
+        </nav.link-to>
+      </nav.item>
+    {{else}}
+      <nav.item>
+        <nav.link-to @route="sign-up">
+          Sign Up
+        </nav.link-to>
+      </nav.item>
+      <nav.item>
+        <nav.link-to @route="login">
+          Login
+        </nav.link-to>
+      </nav.item>
+    {{/if}}
+  </navbar.nav>
+</BsNavbar>
+
 {{outlet}}
 
 <div class="position-fixed top-0 right-0 p-2">
