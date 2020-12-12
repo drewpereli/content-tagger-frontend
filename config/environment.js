@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function(environment) {
+module.exports = function (environment) {
   let ENV = {
     modulePrefix: 'content-tagger',
     environment,
@@ -13,14 +13,15 @@ module.exports = function(environment) {
       },
       EXTEND_PROTOTYPES: {
         // Prevent Ember Data from overriding Date.parse.
-        Date: false
-      }
+        Date: false,
+      },
     },
 
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+      apiHost: 'http://localhost:3000',
+    },
   };
 
   if (environment === 'development') {
@@ -46,6 +47,11 @@ module.exports = function(environment) {
   if (environment === 'production') {
     // here you can enable a production-specific feature
   }
+
+  ENV['ember-simple-auth-token'] = {
+    serverTokenEndpoint: ENV.APP.apiHost + '/login', // Server endpoint to send authenticate request
+    refreshAccessTokens: false,
+  };
 
   return ENV;
 };

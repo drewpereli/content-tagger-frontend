@@ -1,0 +1,8 @@
+<div class="col-md-6 offset-md-3 mt-3">
+  <BsForm @formLayout="vertical" @model={{this}} @onSubmit={{perform this.onSubmit}} as |form|>
+    <form.element @controlType="email" @label="Email" @placeholder="Email" @property="email" @required={{true}} />
+    <form.element @controlType="password" @label="Password" @placeholder="Password" @property="password" @required={{true}} />
+    <form.element @controlType="password" @label="Confirm Password" @placeholder="Confirm Password" @property="passwordConfirmation" @required={{true}} />
+    <form.submitButton>Sign Up</form.submitButton>
+  </BsForm>
+</div>
