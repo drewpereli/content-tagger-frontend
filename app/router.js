@@ -13,4 +13,5 @@ Router.map(function () {
   });
   this.route('sign-up');
   this.route('log-out');
+  this.route('tags', function() {});
 });
