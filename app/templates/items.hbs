@@ -1,5 +1,13 @@
-<div>
+<div class="col-12 py-4">
+  <div class="row">
+    <h3 class="d-inline mr-auto">Items</h3>
+    <LinkTo class="btn btn-success" @route="items.new">New Item</LinkTo>
+  </div>
+
+
   {{#each this.items as |item|}}
     <div>{{item.content}}</div>
   {{/each}}
 </div>
+
+{{outlet}}

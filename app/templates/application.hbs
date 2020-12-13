@@ -24,10 +24,14 @@
   </navbar.nav>
 </BsNavbar>
 
-{{outlet}}
+<div class="container-fluid">
 
-<div class="position-fixed top-0 right-0 p-2">
-  {{#each this.flashMessages.queue as |flash|}}
-    <FlashMessage @flash={{flash}} />
-  {{/each}}
+  {{outlet}}
+
+  <div class="position-fixed top-0 right-0 p-2">
+    {{#each this.flashMessages.queue as |flash|}}
+      <FlashMessage @flash={{flash}} />
+    {{/each}}
+  </div>
+
 </div>

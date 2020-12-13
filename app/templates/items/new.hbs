@@ -1,0 +1,16 @@
+<BsModal
+  @open={{true}}
+  @onHidden={{this.onClose}}
+  as |modal|
+>
+  <modal.header>
+    <h4 class="modal-title">New Item</h4>
+  </modal.header>
+
+  <modal.body>
+    <BsForm @formLayout="vertical" @model={{this}} @onSubmit={{perform this.onSubmit}} as |form|>
+      <form.element @controlType="text" @label="Content" @placeholder="Item Content" @property="content" @required={{true}} />
+      <form.submitButton>Create Item</form.submitButton>
+    </BsForm>
+  </modal.body>
+</BsModal>
