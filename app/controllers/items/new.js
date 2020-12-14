@@ -15,11 +15,23 @@ export default class ItemsNewController extends Controller.extend(Validations) {
   @service flashMessages;
 
   @tracked content;
+  @tracked contentType = 'file';
+
+  contentTypeOptions = ['text', 'link', 'file'];
+
+  @action
+  async onUploadFile(file) {
+    console.log(file);
+    this.content = file;
+  }
 
   @task
   *onSubmit() {
     try {
-      let item = this.store.createRecord('item', { content: this.content });
+      let contentType = this.contentType;
+      let content = contentType === 'file' ? yield this.content.readAsDataURL() : this.content;
+
+      let item = this.store.createRecord('item', { content, contentType });
       yield item.save();
 
       this.flashMessages.success('Item created');

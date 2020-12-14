@@ -9,7 +9,33 @@
 
   <modal.body>
     <BsForm @formLayout="vertical" @model={{this}} @onSubmit={{perform this.onSubmit}} as |form|>
-      <form.element @controlType="text" @label="Content" @placeholder="Item Content" @property="content" @required={{true}} />
+      <form.element @controlType="power-select" @label="Content Type" @property="contentType" @options={{this.contentTypeOptions}} as |el|>
+        <el.control @renderInPlace={{true}} as |option|>
+          {{capitalize option}}
+        </el.control>
+      </form.element>
+
+      {{#if (eq this.contentType "text")}}
+        <form.element @controlType="text" @label="Content" @property="content" />
+      {{else if (eq this.contentType "link")}}
+        <form.element @controlType="text" @label="Url" @property="content" />
+      {{else if (eq this.contentType "file")}}
+        <form.element>
+          <FileUpload @name="content"
+            @accept="image/*"
+            @onfileadd={{this.onUploadFile}}
+          >
+            <a class="btn btn-dark">
+                Upload file
+            </a>
+            {{#if this.content.blob}}
+              {{this.content.name}}
+            {{/if}}
+          </FileUpload>
+        </form.element>
+
+      {{/if}}
+
       <form.submitButton>Create Item</form.submitButton>
     </BsForm>
   </modal.body>
