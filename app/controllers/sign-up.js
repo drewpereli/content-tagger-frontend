@@ -23,9 +23,9 @@ export default class SignUpController extends Controller.extend(Validations) {
   @service router;
   @service flashMessages;
 
-  @tracked email = 'a@b.com';
-  @tracked password = 'Password123';
-  @tracked passwordConfirmation = 'Password123';
+  @tracked email;
+  @tracked password;
+  @tracked passwordConfirmation;
 
   @task
   *onSubmit() {
