@@ -34,6 +34,7 @@
     "ember-cli": "~3.22.0",
     "ember-cli-app-version": "^4.0.0",
     "ember-cli-babel": "^7.22.1",
+    "ember-cli-bootswatch": "^2.0.3",
     "ember-cli-dependency-checker": "^3.2.0",
     "ember-cli-flash": "^2.0.0",
     "ember-cli-form-data": "^2.1.1",
