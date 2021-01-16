@@ -20,20 +20,9 @@
       {{else if (eq this.contentType "link")}}
         <form.element @controlType="text" @label="Url" @property="content" />
       {{else if (eq this.contentType "file")}}
-        <form.element>
-          <FileUpload @name="content"
-            @accept="image/*"
-            @onfileadd={{this.onUploadFile}}
-          >
-            <a class="btn btn-dark">
-                Upload file
-            </a>
-            {{#if this.content.blob}}
-              {{this.content.name}}
-            {{/if}}
-          </FileUpload>
+        <form.element @controlType="text" @label="Url" @property="file">
+          <input type="file" class="form-control-file" {{on "change" this.onUploadFile}} />
         </form.element>
-
       {{/if}}
 
       <form.submitButton>Create Item</form.submitButton>

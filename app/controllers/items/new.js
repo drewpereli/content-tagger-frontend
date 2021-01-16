@@ -3,40 +3,35 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { task } from 'ember-concurrency-decorators';
-import { validator, buildValidations } from 'ember-cp-validations';
 
-const Validations = buildValidations({
-  content: validator('presence', true),
-});
-
-export default class ItemsNewController extends Controller.extend(Validations) {
+export default class ItemsNewController extends Controller {
   @service store;
   @service router;
   @service flashMessages;
 
   @tracked content;
+  @tracked file;
   @tracked contentType = 'file';
 
   contentTypeOptions = ['text', 'link', 'file'];
 
   @action
-  async onUploadFile(file) {
-    console.log(file);
-    this.content = file;
+  onUploadFile(e) {
+    this.file = e.target.files[0];
   }
 
   @task
   *onSubmit() {
     try {
-      let contentType = this.contentType;
-      let content = contentType === 'file' ? yield this.content.readAsDataURL() : this.content;
+      let { content, contentType, file } = this;
 
-      let item = this.store.createRecord('item', { content, contentType });
+      let item = this.store.createRecord('item', { content, contentType, file });
+
       yield item.save();
 
       this.flashMessages.success('Item created');
     } catch (error) {
-      this.flashMessages.danger('Item failed');
+      this.flashMessages.danger('Item creation failed');
       console.log(error);
     }
   }
