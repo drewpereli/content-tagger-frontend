@@ -11,7 +11,7 @@ export default class ItemsNewController extends Controller {
 
   @tracked content;
   @tracked file;
-  @tracked contentType = 'file';
+  @tracked contentType = 'text';
 
   contentTypeOptions = ['text', 'link', 'file'];
 
