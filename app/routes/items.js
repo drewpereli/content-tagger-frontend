@@ -4,7 +4,8 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default class ItemsRoute extends Route.extend(AuthenticatedRouteMixin) {
   async model() {
-    let items = this.store.findAll('item');
-    return { items };
+    let [items, tags] = await Promise.all([this.store.findAll('item'), this.store.findAll('tag')]);
+
+    return { items, tags };
   }
 }

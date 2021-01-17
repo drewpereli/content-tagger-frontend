@@ -6,7 +6,7 @@
 
 
   {{#each @model.items as |item|}}
-    <div>{{item.content}}</div>
+    <EditableItem @item={{item}} @allTags={{this.tags}} class="mt-4 border-bottom border-light" />
   {{/each}}
 </div>
 

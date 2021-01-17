@@ -1,0 +1,26 @@
+<div class="p-4 row" ...attributes>
+  <div class="col-12 mb-4">
+    {{#if (eq @item.contentType "text")}}
+      "{{@item.content}}"
+    {{else if (eq @item.contentType "link")}}
+      link
+    {{else if (eq @item.contentType "file")}}
+      <img src={{@item.fileUrl}} alt="item-{{@item.id}}" />
+    {{/if}}
+  </div>
+
+  <div class="col-12 mb-4">
+    {{#each @item.tags as |tag|}}
+      <BsButton @onClick={{fn this.removeTag tag}}>{{tag.name}}</BsButton>
+    {{/each}}
+  </div>
+
+  <div class="col-12">
+    <h5>Add Tag</h5>
+    <div>
+      {{#each this.addableTags as |tag|}}
+        <BsButton @onClick={{fn this.addTag tag}}>{{tag.name}}</BsButton>
+      {{/each}}
+    </div>
+  </div>
+</div>
